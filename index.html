@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Happy Birthday Ria 🐷💗</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="locked">
+
+  <div class="noise"></div>
+
+  <!-- CONFETTI -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- MUSIC
+       Put your legally obtained MP3 inside:
+       music/song.mp3
+  -->
+  <audio id="backgroundMusic" src="music/song.mp3" preload="auto" loop></audio>
+
+
+  <!-- ================= PASSWORD GATE ================= -->
+
+  <div id="gate">
+
+    <div class="gate-card">
+
+      <div class="lock-icon">🔐</div>
+
+      <div class="eyebrow">A little world for Ria</div>
+
+      <h1>The celebration awaits</h1>
+
+      <p>
+        Enter the secret code to unlock Ria's birthday surprise. 💗
+      </p>
+
+      <form id="gateForm">
+
+        <div class="password-wrap">
+
+          <input
+            id="passwordInput"
+            type="password"
+            inputmode="numeric"
+            maxlength="6"
+            placeholder="••••••"
+            autocomplete="off"
+          >
+
+          <button type="submit">
+            Unlock ✦
+          </button>
+
+        </div>
+
+        <div id="gateMessage"></div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= WEBSITE ================= -->
+
+  <div id="site" aria-hidden="true">
+
+    <!-- NAVBAR -->
+
+    <header class="topbar">
+
+      <a href="#home" class="brand">
+        <span>🐷</span>
+        <strong>Ria's Day</strong>
+      </a>
+
+      <nav>
+        <a href="#cake">Cake</a>
+        <a href="#memories">Memories</a>
+        <a href="#letter">Letter</a>
+      </nav>
+
+      <button id="musicToggle" class="music-toggle">
+        🎵 <span id="musicLabel">Play</span>
+      </button>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section id="home" class="hero">
+
+      <div class="hero-photo"></div>
+
+      <div class="hero-overlay"></div>
+
+      <div class="floating-pig pig-one">🐷</div>
+      <div class="floating-pig pig-two">🐷</div>
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          Today is entirely yours ✦
+        </div>
+
+        <h1>
+          Happy Birthday
+          <br>
+          <span>RIA DIDI</span>
+        </h1>
+
+        <div class="pink-suar-title">
+          THE PINK SUAR 🐷💗
+        </div>
+
+        <p>
+          Meri favourite suari, meri permanent dil-e-jaan,
+          meri kucchu aur meri gunnu and...
+          meri behen. 😂
+        </p>
+
+        <button class="hero-button" onclick="goToCake()">
+          Come on, Pink Suar 🐷
+        </button>
+
+      </div>
+
+      <div class="scroll-cue">
+        <span>Explore</span>
+        <div></div>
+      </div>
+
+    </section>
+
+
+    <!-- ================= CAKE ================= -->
+
+    <section id="cake" class="section cake-section">
+
+      <div class="section-heading">
+
+        <div class="eyebrow">
+          Make a wish ✨
+        </div>
+
+        <h2>
+          Gunnu's Birthday Cake
+        </h2>
+
+        <p>
+          Pink Suar ke liye ek special cake.
+          Pehle candle bujhao, phir cake kaatna. 🎂
+        </p>
+
+      </div>
+
+
+      <div class="cake-shell">
+
+        <div class="cake-glow"></div>
+
+        <canvas
+          id="cakeCanvas"
+          aria-label="Interactive 3D birthday cake">
+        </canvas>
+
+        <div class="cake-tip">
+          Drag the cake to rotate ✦
+        </div>
+
+
+        <div class="cake-buttons">
+
+          <button id="blowButton">
+            💨 Blow Candle
+          </button>
+
+          <button id="cutButton">
+            🍰 Cut Cake
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= MEMORIES ================= -->
+
+    <section id="memories" class="section memories-section">
+
+      <div class="section-heading">
+
+        <div class="eyebrow">
+          Little pieces of joy 📸
+        </div>
+
+        <h2>
+          Gunnu in Makeup
+        </h2>
+
+        <p>
+          Kuch photographic evidence ki Pink Suar kabhi cute bhi thi. 😂
+        </p>
+
+      </div>
+
+
+      <div class="memory-grid">
+
+        <div class="memory-card large">
+
+          <img src="photos/ria1.jpg" alt="Ria memory">
+
+          <div class="photo-caption">
+            <h3>Prettiest Pink Suar</h3>
+            <p>Evidence no. 1 🐷💗</p>
+          </div>
+
+        </div>
+
+
+        <div class="memory-column">
+
+          <div class="memory-card">
+
+            <img src="photos/ria2.jpg" alt="Ria memory">
+
+            <div class="photo-caption">
+              <h3>Pink Suar In Blue 💗</h3>
+            </div>
+
+          </div>
+
+
+          <div class="memory-card">
+
+            <img src="photos/ria3.jpg" alt="Ria memory">
+
+            <div class="photo-caption">
+              <h3>Gunnu's Aesthetics✨</h3>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= LETTER ================= -->
+
+    <section id="letter" class="section letter-section">
+
+      <div class="letter-card">
+
+        <div class="letter-pig">
+          🐷
+        </div>
+
+        <div class="eyebrow">
+          From my tan,man and dhan...  😂
+        </div>
+
+        <h2>
+          Dear Gunnu Srivastava,
+        </h2>
+
+
+        <div class="letter-copy">
+
+          <p>
+            Meri pyaari Ria didi, meri gunnu, meri kucchu aur sabse important...
+            <strong>meri official Pink Suari 🐷</strong>,
+          </p>
+
+          <p>
+            Sabse pehle toh HAPPY BIRTHDAY! 💗
+            Aaj ka din tera hai, isliye aaj main tera zyada
+            mazaak nahi udaungi...
+            <em>koshish karungi.</em> 😂
+          </p>
+
+          <p>
+            Honestly, agar tu ek acchi aulaad nikli hoti toh 
+	    mujhe adopt nhi kiya hota jaise aap kehti hai
+	    magar ek baat toh pakki hai —
+            tumhare bina life bahut boring hoti.
+            Thodi peaceful hoti, haan...
+            lekin <strong>bahut boring.</strong>
+	    Mai shakle kiske saath banati batao!
+          </p>
+
+          <div class="funny-quote">
+            "LOVE YOU GUNNUUUUUUUU (beech beech mein bol rhi hu becuz ilysm)" 🐷
+          </div>
+
+          <p>
+            Gunnu yaar you're the only one jo mujhe ek minute mein hasa sakta hai,
+            doosre minute mein irritate kar sakta hai hadd paar,
+            aur teesre minute mein aise behave kar sakta hai jaise
+            <strong>kuch hua hi nahi.</strong> 😂
+	    But still I love you soch kitni acchi hu mai
+          </p>
+
+	  <p>
+            Gunnu yaar mujhe lagta hai humare paas zyada
+	    time nhi mila matlab hum jab chhote the tab 
+	    ladte hi reh gye and ab bade mein tu dur 
+            chali gyi par tu tension mat le tujhe pareshaan
+	    karne mai georgia bhi pahonch jaungi hehe.
+          </p>
+
+
+          <p>
+            Ab important talks dekh gunnu ek cheez tu samajh
+	    ki chahe mai kitni bhi dur hu, chhoti hu ya naasamajh hu (tere according)
+	    I still am human and most importantly teri behen hu so
+	    kuch bhi ho life mein I will always be there for you no matter what.
+	    And aisa bilkul nahi hai ki I won't take your side yaa kuch. 
+          </p>
+
+          <p>
+            Next important baat I want you to understand ki you 
+	    have to respect yourself in any relationship first, agar khud
+	    hi jhukti rahogi toh saamne wala kadar nahi karega. Also I hope
+	    ki bhagwan tujhe accha pati de and gande negative log se bachaye.  💗
+          </p>
+
+          <p>
+            Baaki I hope teri life mein hamesha khushiyaan rahe,
+            tu jaldi se acchi cardiologist ban jaaye,
+            tumhe woh saara pyaar mile jo tum deserve karti ho,
+            accha khaana mile aur mere saath time spend karne ka zyada se zyada mauka 
+	    mile because baad mein mai famous ho jaungi toh zyada time nhi bachega 
+            na mere paas gunnu isliye abhi time hai mujhe pata ke rakh hehe.
+          </p>
+
+          <p>
+            Aur haan...
+            <strong>please change mat hona.</strong>
+            <strong>Humesha meri Pink Suar rehna.</strong> 🐷💗
+          </p>
+
+          <p>
+            Chahe hum kitna bhi lad lein,
+            kitna bhi ek doosre ko irritate karein,
+            ya ek doosre ka mazaak banayein,
+            at the end of the day,
+            I will always have your back.
+          </p>
+
+          <p class="big-love">
+            I LOVE YOU ALWAYS & FOREVER. 💗
+          </p>
+
+          <p>
+            Aur haan, ek last important announcement:
+          </p>
+
+          <div class="funny-quote big">
+            YOU ARE VERY LOVABLE.
+            <br>
+            SO LOTS OF CHUMMASSSSSS 💗💗
+          </div>
+
+        </div>
+
+
+        <div class="signature">
+          Lots and lots of love,<br>
+          Pucchu ✦
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= FINAL ================= -->
+
+    <section class="final-section">
+
+      <div class="final-pig">
+        🐷
+      </div>
+
+      <h2>
+        MERI PYAARI GUNNU!
+      </h2>
+
+      <p>
+        Agar tum yahan tak aa gayi ho...
+      </p>
+
+      <p class="final-message">
+        toh samajh jao ki tum
+        <strong>SUAR hi ho. 💗</strong>
+      </p>
+
+      <button id="finalButton">
+        One Last Surprise 🎁
+      </button>
+
+    </section>
+
+
+    <footer>
+      Made with love and gunnu ki private wali pig emojis 🐷💗
+    </footer>
+
+  </div>
+
+
+  <!-- PINK PIG POPUP -->
+
+  <div id="pigPopup">
+    🐷
+    <span>OINK OINK! 💗</span>
+  </div>
+
+
+  <div id="toast"></div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
